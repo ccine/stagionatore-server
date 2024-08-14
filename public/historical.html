@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dati Storici</title>
+    <!-- Includi Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-10">
+          <h2>Dati Storici</h2>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="location.href='/';"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+              />
+            </svg>
+            Indietro
+          </button>
+        </div>
+      </div>
+      <form id="filter-form" class="form-inline mb-4">
+        <div class="form-group mr-3">
+          <label for="start-date" class="mr-2">Data Inizio:</label>
+          <input type="date" id="start-date" class="form-control" />
+        </div>
+        <div class="form-group mr-3">
+          <label for="end-date" class="mr-2">Data Fine:</label>
+          <input type="date" id="end-date" class="form-control" />
+        </div>
+        <button type="button" id="filter-btn" class="btn btn-primary">
+          Filtra
+        </button>
+        <button type="button" id="clear-btn" class="btn btn-secondary ml-2">
+          Elimina Filtro
+        </button>
+      </form>
+      <!-- Sezione per il grafico -->
+      <canvas id="historicalChart"></canvas>
+      <!-- Sezione per la tabella -->
+      <div class="table-responsive">
+        <table class="table table-striped mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Timestamp</th>
+              <th scope="col">Temp. Superiore (°C)</th>
+              <th scope="col">Temp. Inferiore (°C)</th>
+              <th scope="col">Umidità Superiore (%)</th>
+              <th scope="col">Umidità Inferiore (%)</th>
+              <th scope="col">Raffreddamento</th>
+              <th scope="col">Riscaldamento</th>
+              <th scope="col">Ventola</th>
+              <th scope="col">Deumidificatore</th>
+              <th scope="col">Umidificatore</th>
+            </tr>
+          </thead>
+          <tbody id="data-table-body">
+            <!-- Le righe della tabella sono generate dinamicamente -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Includi Bootstrap JS e dipendenze -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script custom -->
+    <script src="historicalScript.js"></script>
+  </body>
+</html>

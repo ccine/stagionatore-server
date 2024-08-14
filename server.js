@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fetch from "node-fetch";
+import { getHistoricalData, saveChamberStatus } from "./database.js";
 
 const app = express();
 const port = 3000;
@@ -75,24 +76,27 @@ app.get("/historical-data", async (req, res) => {
 
 // Funzione per inviare comandi ad Arduino tramite richiesta GET
 async function sendCommandToArduino(command, data = {}) {
-    try {
-      // Costruisci l'URL con i parametri di query
-      const queryParams = new URLSearchParams({ command, ...data });
-      const url = `${arduinoUrl}command?${queryParams.toString()}`;
-  
-      const response = await fetch(url, {
-        method: "GET",
-      });
-  
-      if (response.ok) {
-        return await response.text();
-      } else {
-        console.error(`Errore nell'invio del comando ${command}:`, response.statusText);
-      }
-    } catch (error) {
-      console.error("Errore nella comunicazione con Arduino:", error);
+  try {
+    // Costruisci l'URL con i parametri di query
+    const queryParams = new URLSearchParams({ command, ...data });
+    const url = `${arduinoUrl}command?${queryParams.toString()}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      return await response.text();
+    } else {
+      console.error(
+        `Errore nell'invio del comando ${command}:`,
+        response.statusText
+      );
     }
+  } catch (error) {
+    console.error("Errore nella comunicazione con Arduino:", error);
   }
+}
 
 // Avvio del server
 app.listen(port, () => {
