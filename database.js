@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-const db = new sqlite3.Database("chamberData.db");
+const db = new sqlite3.Database("../chamberData.db");
 
 // Creazione della tabella se non esiste
 db.serialize(() => {
