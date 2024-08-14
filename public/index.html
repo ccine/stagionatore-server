@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controllo Stagionatore</title>
+    <!--Includi Bootstrap CSS-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Personalizzazioni CSS aggiuntive */
+      .row {
+        margin-bottom: 1em;
+      }
+      .equipment-status {
+        font-weight: bold;
+      }
+      #controlli-stagionatore,
+      #form-stagionatura {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div id="stato-stagionatore" class="alert" role="alert">
+        Stato: <strong id="status">Loading...</strong>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Temperatura Alto: <span id="temp-alto">--</span></h4>
+        </div>
+        <div class="col">
+          <h4>Umidità Alto: <span id="umid-alto">--</span></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Temperatura Basso: <span id="temp-basso">--</span></h4>
+        </div>
+        <div class="col">
+          <h4>Umidità Basso: <span id="umid-basso">--</span></h4>
+        </div>
+      </div>
+
+      <!-- Form per avvio stagionatura -->
+      <div id="form-stagionatura" class="my-3">
+        <h5>Inizia Programma di Stagionatura:</h5>
+        <form id="manual-start-form">
+          <div class="form-group">
+            <label for="temp-set">Imposta Temperatura:</label>
+            <input
+              type="number"
+              id="temp-set"
+              name="temp-set"
+              class="form-control"
+              placeholder="Temperatura in °C"
+            />
+          </div>
+          <div class="form-group">
+            <label for="umid-set">Imposta Umidità:</label>
+            <input
+              type="number"
+              id="umid-set"
+              name="umid-set"
+              class="form-control"
+              placeholder="Umidità in %"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Inizia Manuale</button>
+        </form>
+        <br />
+        <button id="start-auto-btn" class="btn btn-info">Start Auto</button>
+      </div>
+
+      <!-- Controlli se lo stagionatore è acceso -->
+      <div id="controlli-stagionatore" class="my-3">
+        <h5>Impostazioni Attuali:</h5>
+        <p>Temperatura Impostata: <span id="temp-impostata">--</span></p>
+        <p>Umidità Impostata: <span id="umid-impostata">--</span></p>
+        <p>Step: <span id="step">--</span></p>
+        <p>Tempo(min): <span id="time">--</span></p>
+        <!-- Informazioni sulla ventola e sugli altri dispositivi -->
+        <p>Ventola: <span id="fan-status" class="equipment-status">--</span></p>
+        <p>
+          Riscaldatore:
+          <span id="heating-status" class="equipment-status">--</span>
+        </p>
+        <p>
+          Raffreddatore:
+          <span id="cooling-status" class="equipment-status">--</span>
+        </p>
+        <p>
+          Umidificatore:
+          <span id="humidifier-status" class="equipment-status">--</span>
+        </p>
+        <p>
+          Deumidificatore:
+          <span id="dehumidifier-status" class="equipment-status">--</span>
+        </p>
+        <button id="stop-btn" class="btn btn-danger">Stop</button>
+      </div>
+    </div>
+    <!-- Includi Bootstrap JS e dipendenze -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Includi il tuo script personalizzato -->
+    <script src="script.js"></script>
+  </body>
+</html>
