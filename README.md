@@ -19,8 +19,8 @@ This server is designed to control and monitor the operations of a meat curing c
 
 1. Clone the repository to your local machine:
     ```bash
-    git clone <repository_url>
-    cd stagionatore
+    git clone https://github.com/ccine/stagionatore-server
+    cd stagionatore-server
     ```
 
 2. Install the necessary Node.js dependencies:
