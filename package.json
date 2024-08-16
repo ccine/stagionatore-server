@@ -11,9 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "better-sqlite3": "^11.1.2",
     "express": "^4.19.2",
-    "node-fetch": "^3.3.2",
-    "sqlite3": "^5.1.7",
-    "stagionatore-server": "file:"
+    "node-fetch": "^3.3.2"
   }
 }
